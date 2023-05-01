@@ -2,6 +2,7 @@ vim.g.mapleader = " "
 
 vim.keymap.set("n", "<leader>xf", ":Neotree reveal<CR>")
 vim.keymap.set("n", "<leader>xb", ":Telescope buffers<CR>")
+vim.keymap.set("n", "<leader>ff", ":Telescope find_files<CR>")
 
 -- Close buffer without closing window
 vim.keymap.set("n", "<leader>xk", ":bp<bar>sp<bar>bn<bar>bd<CR>", {desc = "Close buffer, keep window"})

@@ -9,7 +9,7 @@ lsp.ensure_installed({
 })
 
 lsp.set_sign_icons({
-  error = '⊙',
+  error = '●',
   warn = 'W',
   hint = 'H',
   info = 'I'
