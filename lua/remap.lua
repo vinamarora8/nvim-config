@@ -19,3 +19,17 @@ function ToggleSigncolumn()
     end
 end
 vim.keymap.set("n", "<leader>s", ":lua ToggleSigncolumn()<CR>", {desc = "Toggle sign column"})
+
+-- Gitsigns
+function MyGitSignsToggle()
+    local gitsigns = require('gitsigns')
+    gitsigns.toggle_numhl()
+    gitsigns.toggle_deleted()
+end
+vim.keymap.set("n", "<leader>gg", MyGitSignsToggle, {desc = "Gitsigns: Toggle info"})
+vim.keymap.set("n", "<leader>gih", require('gitsigns').select_hunk, {desc = "Gitsigns: Select hunk"})
+vim.keymap.set("n", "<leader>gh", require('gitsigns').preview_hunk, {desc = "Gitsigns: Select hunk"})
+vim.keymap.set("v", "<leader>gs", require('gitsigns').stage_hunk, {desc = "Gitsigns: Stage hunk"})
+vim.keymap.set("n", "<leader>gs", require('gitsigns').stage_hunk, {desc = "Gitsigns: Stage hunk"})
+vim.keymap.set("n", "<leader>gu", require('gitsigns').undo_stage_hunk, {desc = "Gitsigns: Undo stage hunk"})
+vim.keymap.set("n", "<leader>gb", require('gitsigns').blame_line, {desc = "Gitsigns: Blame line"})
