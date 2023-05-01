@@ -103,12 +103,7 @@ return require('packer').startup(function(use)
     }
 
     use('tpope/vim-fugitive')
-    use({
-        'lewis6991/gitsigns.nvim',
-        config = function()
-            require('gitsigns').setup({})
-        end
-    })
+    use('lewis6991/gitsigns.nvim')
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
