@@ -8,16 +8,24 @@ lsp.ensure_installed({
   "lua_ls",
 })
 
+lsp.set_sign_icons({
+  error = '⊙',
+  warn = 'W',
+  hint = 'H',
+  info = 'I'
+})
+
+
 local diagnostic_opts = {
     underline = true,
     virtual_text = false,  -- No light text in buffer showing errors
-    signs = false,
+    signs = true,
     update_in_insert = true,
 }
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, diagnostic_opts)
 
 
-lsp.on_attach(function(client, bufnr)
+lsp.on_attach(function(_, bufnr)
     lsp.default_keymaps({buffer = bufnr})
 
     vim.keymap.set("n", "<leader>ls", function() vim.lsp.buf.workspace_symbol() end, {desc = "LSP: Workspace Symbol"})

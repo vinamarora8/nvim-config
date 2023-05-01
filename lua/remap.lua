@@ -9,3 +9,12 @@ vim.keymap.set("n", "<leader>bd", ":bp<bar>sp<bar>bn<bar>bd<CR>", {desc = "Close
 
 vim.keymap.set("n", "<leader>n", ":noh<CR>", {desc = "Clear highlights"})
 
+-- Sign column toggle
+function ToggleSigncolumn()
+    if vim.wo.signcolumn == "yes" then
+        vim.wo.signcolumn = "no"
+    else
+        vim.wo.signcolumn = "yes"
+    end
+end
+vim.keymap.set("n", "<leader>s", ":lua ToggleSigncolumn()<CR>", {desc = "Toggle sign column"})

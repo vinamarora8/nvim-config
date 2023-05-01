@@ -39,6 +39,9 @@ custom.TabLine = {
 }
 custom.TabLineFill = {
 }
+custom.SignColumn = {
+      bg = palette.base0,
+    }
 
 monokai.setup {
     italics = false,
