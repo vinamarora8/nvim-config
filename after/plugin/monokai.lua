@@ -20,15 +20,25 @@ local custom = {}
 custom.Normal = {
     bg = palette.base0,
 }
+custom.SignColumn = {
+      bg = palette.base0,
+    }
+
 custom.LineNr = {
-    fg = palette.base6,
+    fg = ColorScale(palette.base5, 1.0),
 }
+custom.CursorLineNr = {
+    fg = palette.base8
+}
+
 custom.MatchParen = {
     fg = palette.green,
 }
+
 custom.CopilotSuggestion = {
-    fg = palette.base5,
+    fg = palette.base4,
 }
+
 custom.TabLineSel = {
     fg = palette.base0,
     bg = palette.base6,
@@ -39,16 +49,13 @@ custom.TabLine = {
 }
 custom.TabLineFill = {
 }
-custom.SignColumn = {
-      bg = palette.base0,
-    }
 
 monokai.setup {
     italics = false,
     custom_hlgroups = custom,
 }
 
-function get_curr_lsps_str()
+function GetCurrLspsStr()
     local T = vim.lsp.buf_get_clients()
     local s = ''
     for k,v in pairs(T) do
@@ -61,11 +68,6 @@ function get_curr_lsps_str()
     return vim.trim(s)
 end
 
-function get_rel_fname()
-    local fname = vim.fn.expand('%')
-    return fname
-end
-
 require('lualine').setup({
     options = {
         section_separators = {left = "", right = ""},
@@ -75,11 +77,7 @@ require('lualine').setup({
     sections = {
         lualine_b = {'branch'}, --'diff'
         lualine_c = {'vim.fn.pathshorten(vim.fn.expand("%"))'}, --'diff'
-        lualine_x = {'diagnostics', 'get_curr_lsps_str()', 'fileformat', 'filetype'},
+        lualine_x = {'diagnostics', 'GetCurrLspsStr()', 'fileformat', 'filetype'},
         lualine_y = {},
     }
 })
-
-print(get_rel_fname())
--- vim.cmd('highlight GitSignsAddNr guibg='..ColorScale(palette.green,0.5)..' guifg='..custom.LineNr.fg)
--- vim.cmd('highlight GitSignsChangeNr guibg='..ColorScale(palette.blue,0.5)..' guifg='..custom.LineNr.fg)
