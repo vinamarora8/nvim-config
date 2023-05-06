@@ -105,6 +105,14 @@ return require('packer').startup(function(use)
     use('tpope/vim-fugitive')
     use('lewis6991/gitsigns.nvim')
 
+    use {
+        's1n7ax/nvim-window-picker',
+        tag = 'v1.*',
+        config = function()
+            require'window-picker'.setup()
+        end,
+    }
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if packer_bootstrap then
