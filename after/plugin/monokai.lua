@@ -65,19 +65,22 @@ function GetCurrLspsStr()
             end
         end
     end
-    return vim.trim(s)
+    s = vim.trim(s)
+    return s
 end
 
 require('lualine').setup({
     options = {
         section_separators = {left = "", right = ""},
+        component_separators = {left = "|", right = "|"},
         theme = "base16",
         ignore_focus = {"neo-tree", "help"},
     },
     sections = {
+        lualine_a = { 'mode'},
         lualine_b = {'branch'}, --'diff'
         lualine_c = {'vim.fn.pathshorten(vim.fn.expand("%"))'}, --'diff'
-        lualine_x = {'diagnostics', 'GetCurrLspsStr()', 'fileformat', 'filetype'},
+        lualine_x = {'diagnostics', 'GetCurrLspsStr()'},
         lualine_y = {},
     }
 })

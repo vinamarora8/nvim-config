@@ -20,3 +20,5 @@ function ToggleSigncolumn()
 end
 vim.keymap.set("n", "<leader>s", ":lua ToggleSigncolumn()<CR>", {desc = "Toggle sign column"})
 
+vim.keymap.set("n", "<leader>z", ":ZenMode<CR>", {desc = "Toggle zen mode"})
+
