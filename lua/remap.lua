@@ -77,7 +77,7 @@ end
 vim.keymap.set("n", "<leader>gg", GitBufferInfoToggle, { desc = "git: toggle diff" })
 vim.keymap.set("n", "<leader>gv", ":Gitsigns select_hunk<CR>", { desc = "select hunk" })
 vim.keymap.set("n", "<leader>gd", ":Gitsigns preview_hunk<CR>", { desc = "preview hunk diff" })
-vim.keymap.set("n", "<leader>gi", ":FloatermNew gitui<CR>", { desc = "git: toggle diff" })
+vim.keymap.set("n", "<leader>gi", ":FloatermNew --height=0.8 --width=0.8 --name=gitui gitui<CR>", { desc = "git: toggle diff" })
 
 vim.keymap.set("n", "<leader>gs", ":Gitsigns stage_hunk<CR>", { desc = "stage hunk" })
 vim.keymap.set("v", "<leader>gs", function()
