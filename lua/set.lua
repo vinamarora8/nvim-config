@@ -22,6 +22,8 @@ vim.opt.signcolumn = "yes"
 
 vim.opt.mouse = "a"
 
+vim.opt.splitright = true
+
 vim.cmd "set formatoptions-=ro"
 
 -- vim.diagnostic.config({
