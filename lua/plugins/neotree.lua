@@ -10,14 +10,14 @@ return {
         lazy = false, -- neo-tree will lazily load itself
         opts = {
             window = {
-                size = { width = 12 }
+                size = { width = 12 },
             },
             filesystem = {
                 use_libuv_file_watcher = true,
                 follow_current_file = {
                     enabled = true,
-                }
-            }
+                },
+            },
         },
     },
 }

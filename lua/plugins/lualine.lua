@@ -8,14 +8,14 @@ end
 
 function GetCurrLspsStr()
     local T = vim.lsp.get_clients()
-    local s = ''
+    local s = ""
     for k, _ in pairs(T) do
         for k1, v1 in pairs(T[k]) do
-            if k1 == 'name' then
+            if k1 == "name" then
                 if v1 == "GitHub Copilot" then
                     v1 = "copilot"
                 end
-                s = s .. v1 .. ' '
+                s = s .. v1 .. " "
             end
         end
     end
@@ -24,9 +24,9 @@ end
 
 return {
     {
-        'nvim-lualine/lualine.nvim',
+        "nvim-lualine/lualine.nvim",
         lazy = false,
-        dependencies = { 'nvim-tree/nvim-web-devicons' },
+        dependencies = { "nvim-tree/nvim-web-devicons" },
         opts = {
             options = {
                 section_separators = { left = "", right = "" },
@@ -34,11 +34,11 @@ return {
                 ignore_focus = { "neo-tree", "help" },
             },
             sections = {
-                lualine_b = { 'branch' },               --'diff'
-                lualine_c = { 'GetCleanBufferPath()' }, --'diff'
-                lualine_x = { 'diagnostics', 'GetCurrLspsStr()', 'filetype' },
+                lualine_b = { "branch" }, --'diff'
+                lualine_c = { "GetCleanBufferPath()" }, --'diff'
+                lualine_x = { "diagnostics", "GetCurrLspsStr()", "filetype" },
                 lualine_y = {},
-            }
-        }
+            },
+        },
     },
 }

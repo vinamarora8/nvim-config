@@ -1,17 +1,17 @@
 function ToggleSigncolumn()
-	if vim.wo.signcolumn == "yes" then
-		vim.wo.signcolumn = "no"
-	else
-		vim.wo.signcolumn = "yes"
-	end
+    if vim.wo.signcolumn == "yes" then
+        vim.wo.signcolumn = "no"
+    else
+        vim.wo.signcolumn = "yes"
+    end
 end
 
 function TelescopeSafeGitFiles()
-	if os.execute("git rev-parse HEAD 2> /dev/null 1> /dev/null") == 0 then
-		vim.cmd("Telescope git_files")
-	else
-		vim.cmd("Telescope find_files")
-	end
+    if os.execute("git rev-parse HEAD 2> /dev/null 1> /dev/null") == 0 then
+        vim.cmd("Telescope git_files")
+    else
+        vim.cmd("Telescope find_files")
+    end
 end
 
 vim.g.mapleader = " "
@@ -38,20 +38,20 @@ vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste over selection withou
 -- vim.keymap.set("n", "<C-d>", "10j10<C-e>", { noremap = true })
 -- vim.keymap.set("n", "<C-u>", "10k10<C-y>", { noremap = true })
 vim.keymap.set("n", "<C-d>", function()
-	vim.cmd("normal! 10j")
-	local bottom_lines = vim.o.lines - vim.fn.winline() - 2 -- 2 = cmd and status lines
-	if bottom_lines < 10 then
-		local move_up = 10 - bottom_lines
-		vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(move_up .. "<C-e>", true, false, true), "n", true)
-	end
+    vim.cmd("normal! 10j")
+    local bottom_lines = vim.o.lines - vim.fn.winline() - 2 -- 2 = cmd and status lines
+    if bottom_lines < 10 then
+        local move_up = 10 - bottom_lines
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(move_up .. "<C-e>", true, false, true), "n", true)
+    end
 end, { noremap = true, silent = true })
 vim.keymap.set("n", "<C-u>", function()
-	vim.cmd("normal! 10k")
-	local top_lines = vim.fn.winline()
-	if top_lines < 10 then
-		local move_down = 10 - top_lines
-		vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(move_down .. "<C-y>", true, false, true), "n", true)
-	end
+    vim.cmd("normal! 10k")
+    local top_lines = vim.fn.winline()
+    if top_lines < 10 then
+        local move_down = 10 - top_lines
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(move_down .. "<C-y>", true, false, true), "n", true)
+    end
 end, { noremap = true, silent = true })
 
 -- Sign column toggle
@@ -59,31 +59,31 @@ vim.keymap.set("n", "<leader>s", ToggleSigncolumn, { desc = "Toggle sign column"
 
 -- LSP
 vim.api.nvim_create_autocmd("LspAttach", {
-	desc = "LSP actions",
-	callback = function(e)
-		local desc_opts = function(desc)
-			return { buffer = e.buf, desc = desc }
-		end
-		print("LSP attached!")
-		vim.keymap.set("n", "gd", vim.lsp.buf.definition, desc_opts("LSP: goto definition"))
-		vim.keymap.set("n", "K", function()
-			vim.lsp.buf.hover({ border = "single" })
-		end, desc_opts("LSP: symbol info"))
-		vim.keymap.set("n", "<leader>ld", vim.diagnostic.open_float, desc_opts("show LSP diagnostics under cursor"))
-		vim.keymap.set("n", "<leader>lr", vim.lsp.buf.references, desc_opts("show references of symbol under cursor"))
-		vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, desc_opts("rename symbol under cursor"))
-		vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, desc_opts("show function signature"))
-		vim.keymap.set("n", "]d", vim.diagnostic.goto_next, desc_opts("goto next diagnostic"))
-		vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, desc_opts("goto prev diagnostic"))
-		vim.keymap.set("n", "<leader>lq", vim.diagnostic.setqflist, desc_opts("open diagonostics as qflist"))
-		-- vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, { buffer = e.buf, desc = "Workspace symbol" })
-		-- vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
-		--
-		-- Disabled since handling
-		-- vim.keymap.set("n", "<leader>bf", function()
-		--     vim.lsp.buf.format(); print("Formatted")
-		-- end, desc_opts("LSP: format current buffer"))
-	end,
+    desc = "LSP actions",
+    callback = function(e)
+        local desc_opts = function(desc)
+            return { buffer = e.buf, desc = desc }
+        end
+        print("LSP attached!")
+        vim.keymap.set("n", "gd", vim.lsp.buf.definition, desc_opts("LSP: goto definition"))
+        vim.keymap.set("n", "K", function()
+            vim.lsp.buf.hover({ border = "single" })
+        end, desc_opts("LSP: symbol info"))
+        vim.keymap.set("n", "<leader>ld", vim.diagnostic.open_float, desc_opts("show LSP diagnostics under cursor"))
+        vim.keymap.set("n", "<leader>lr", vim.lsp.buf.references, desc_opts("show references of symbol under cursor"))
+        vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, desc_opts("rename symbol under cursor"))
+        vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, desc_opts("show function signature"))
+        vim.keymap.set("n", "]d", vim.diagnostic.goto_next, desc_opts("goto next diagnostic"))
+        vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, desc_opts("goto prev diagnostic"))
+        vim.keymap.set("n", "<leader>lq", vim.diagnostic.setqflist, desc_opts("open diagonostics as qflist"))
+        -- vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, { buffer = e.buf, desc = "Workspace symbol" })
+        -- vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
+        --
+        -- Disabled since handling
+        -- vim.keymap.set("n", "<leader>bf", function()
+        --     vim.lsp.buf.format(); print("Formatted")
+        -- end, desc_opts("LSP: format current buffer"))
+    end,
 })
 
 -- Formatting
@@ -91,28 +91,28 @@ vim.keymap.set("n", "<leader>bf", ":lua require('conform').format()<CR>", { desc
 
 -- Git
 function GitBufferInfoToggle()
-	local gitsigns = require("gitsigns")
-	gitsigns.toggle_linehl()
-	gitsigns.toggle_deleted()
+    local gitsigns = require("gitsigns")
+    gitsigns.toggle_linehl()
+    gitsigns.toggle_deleted()
 end
 vim.keymap.set("n", "<leader>gg", GitBufferInfoToggle, { desc = "git: toggle diff" })
 vim.keymap.set("n", "<leader>gv", ":Gitsigns select_hunk<CR>", { desc = "select hunk" })
 vim.keymap.set("n", "<leader>gd", ":Gitsigns preview_hunk<CR>", { desc = "preview hunk diff" })
 vim.keymap.set(
-	"n",
-	"<leader>gi",
-	":FloatermNew --height=0.8 --width=0.8 --name=gitui gitui<CR>",
-	{ desc = "git: toggle diff" }
+    "n",
+    "<leader>gi",
+    ":FloatermNew --height=0.8 --width=0.8 --name=gitui gitui<CR>",
+    { desc = "git: toggle diff" }
 )
 
 vim.keymap.set("n", "<leader>gs", ":Gitsigns stage_hunk<CR>", { desc = "stage hunk" })
 vim.keymap.set("v", "<leader>gs", function()
-	require("gitsigns").stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
+    require("gitsigns").stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
 end, { desc = "stage hunk" })
 
 vim.keymap.set("n", "<leader>gx", ":Gitsigns reset_hunk<CR>", { desc = "reset hunk" })
 vim.keymap.set("v", "<leader>gx", function()
-	require("gitsigns").reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
+    require("gitsigns").reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
 end, { desc = "reset hunk" })
 
 vim.keymap.set("n", "<leader>gu", ":Gitsigns undo_stage_hunk<CR>", { desc = "unstage hunk" })
@@ -124,16 +124,16 @@ vim.keymap.set("n", "<leader>gl", ":Gitsigns setqflist<CR>", { desc = "show chan
 -- Copilot chat
 vim.keymap.set("n", "<A-l>", ":CopilotChatToggle<CR>")
 vim.keymap.set("n", "<A-k>", function()
-	require("CopilotChat").open({
-		window = {
-			layout = "float",
-			relative = "cursor",
-			width = 80,
-			height = 5,
-			row = -5,
-			col = 0,
-		},
-	})
+    require("CopilotChat").open({
+        window = {
+            layout = "float",
+            relative = "cursor",
+            width = 80,
+            height = 5,
+            row = -5,
+            col = 0,
+        },
+    })
 end)
 
 -- Lol

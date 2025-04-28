@@ -25,7 +25,7 @@ vim.opt.mouse = "a"
 
 vim.opt.splitright = true
 
-vim.cmd "set formatoptions-=ro"
+vim.cmd("set formatoptions-=ro")
 
 -- vim.diagnostic.config({
 --   virtual_text = true, -- or false to disable
