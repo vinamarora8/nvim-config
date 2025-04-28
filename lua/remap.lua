@@ -31,7 +31,6 @@ vim.keymap.set("n", "<leader>bk", ":bp<bar>sp<bar>bn<bar>bd<CR>", { desc = "Buff
 -- Sign column toggle
 vim.keymap.set("n", "<leader>s", ToggleSigncolumn, { desc = "Toggle sign column", silent = true })
 
-
 -- Text editing --
 ------------------
 vim.keymap.set("i", "<C-c>", "<Esc>")
@@ -42,7 +41,7 @@ vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste over selection withou
 -- Movement
 vim.keymap.set("n", "<C-d>", "10j", { noremap = true })
 vim.keymap.set("n", "<C-u>", "10k", { noremap = true })
-
+vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Undo tree" })
 
 -- LSP
 vim.api.nvim_create_autocmd("LspAttach", {
