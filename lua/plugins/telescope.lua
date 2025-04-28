@@ -10,7 +10,7 @@ return {
                 layout_config = {
                     width = 0.7,
                     horizontal = {
-                        preview_width = 0.6,
+                        preview_width = 0.5,
                     },
                 },
                 mappings = {

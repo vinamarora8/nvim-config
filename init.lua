@@ -10,9 +10,8 @@ vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGai
 })
 
 -- Highlight on yank
-local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
-    group = highlight_group,
+    group = vim.api.nvim_create_augroup("yank-highlight", { clear = true }),
     pattern = "*",
     callback = function()
         vim.highlight.on_yank({
@@ -23,9 +22,8 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 -- Remove trailing whitespace on save
-local format_group = vim.api.nvim_create_augroup("FormatOptions", { clear = true })
 vim.api.nvim_create_autocmd("BufWritePre", {
-    group = format_group,
+    group = vim.api.nvim_create_augroup("clean-ws-on-save", { clear = true }),
     pattern = "*",
     command = [[%s/\s\+$//e]],
 })

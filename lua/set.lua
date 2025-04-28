@@ -17,7 +17,7 @@ vim.opt.breakindent = true
 
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
-vim.opt.inccommand = 'split' -- Preview substitutions live, as you type!
+vim.opt.inccommand = "split" -- Preview substitutions live, as you type!
 
 vim.opt.scrolloff = 10 -- Minimal number of screen lines to keep above and below the cursor.
 
@@ -35,8 +35,7 @@ vim.opt.splitbelow = true -- ...
 --  See `:help 'list'`
 --  and `:help 'listchars'`
 vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
-
+vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
 -- Don't continue comments on newlines (very annoying behavior)
 vim.cmd("autocmd BufEnter * set formatoptions-=cro")

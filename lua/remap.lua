@@ -34,7 +34,8 @@ vim.keymap.set("n", "<leader>s", ToggleSigncolumn, { desc = "Toggle sign column"
 -- Text editing --
 ------------------
 vim.keymap.set("i", "<C-c>", "<Esc>")
-vim.keymap.set("n", "<leader>n", ":noh<CR>:cclose<CR>", { desc = "Clear highlights & close quickfix list" })
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
+-- vim.keymap.set("n", "<leader>n", ":noh<CR>:cclose<CR>", { desc = "Clear highlights & close quickfix list" })
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv") -- move selected lines below, try to match new indentation
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv") -- ^^
 vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste over selection without yanking" })
@@ -42,6 +43,9 @@ vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste over selection withou
 vim.keymap.set("n", "<C-d>", "10j", { noremap = true })
 vim.keymap.set("n", "<C-u>", "10k", { noremap = true })
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Undo tree" })
+
+-- Terminal
+vim.keymap.set("t", "", "<C-\\><C-N>") -- <Esc><Esc> leaves terminal mode
 
 -- LSP
 vim.api.nvim_create_autocmd("LspAttach", {
