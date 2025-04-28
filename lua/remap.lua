@@ -30,6 +30,7 @@ vim.keymap.set("n", "<leader>bk", ":bp<bar>sp<bar>bn<bar>bd<CR>", { desc = "Buff
 
 -- Text editing --
 ------------------
+vim.keymap.set("i", "<C-c>", "<Esc>")
 vim.keymap.set("n", "<leader>n", ":noh<CR>:cclose<CR>", { desc = "Clear highlights & close quickfix list" })
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv") -- move lines under selection
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -64,8 +65,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
         local desc_opts = function(desc)
             return { buffer = e.buf, desc = desc }
         end
-        print("LSP attached!")
+        -- print("LSP attached!")
         vim.keymap.set("n", "gd", vim.lsp.buf.definition, desc_opts("LSP: goto definition"))
+        vim.keymap.set("n", "gr", ":Telescope lsp_references<CR>", { desc = "show references" })
         vim.keymap.set("n", "K", function()
             vim.lsp.buf.hover({ border = "single" })
         end, desc_opts("LSP: symbol info"))
