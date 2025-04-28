@@ -28,35 +28,21 @@ vim.keymap.set("n", "<leader>xk", ":bp<bar>sp<bar>bn<bar>bd<CR>", { desc = "Buff
 vim.keymap.set("n", "<leader>bl", ":Telescope buffers<CR>", { desc = "Buffer: list in telescope" })
 vim.keymap.set("n", "<leader>bk", ":bp<bar>sp<bar>bn<bar>bd<CR>", { desc = "Buffer: close current" })
 
+-- Sign column toggle
+vim.keymap.set("n", "<leader>s", ToggleSigncolumn, { desc = "Toggle sign column", silent = true })
+
+
 -- Text editing --
 ------------------
 vim.keymap.set("i", "<C-c>", "<Esc>")
 vim.keymap.set("n", "<leader>n", ":noh<CR>:cclose<CR>", { desc = "Clear highlights & close quickfix list" })
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv") -- move lines under selection
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv") -- move selected lines below, try to match new indentation
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv") -- ^^
 vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste over selection without yanking" })
 -- Movement
--- vim.keymap.set("n", "<C-d>", "10j10<C-e>", { noremap = true })
--- vim.keymap.set("n", "<C-u>", "10k10<C-y>", { noremap = true })
-vim.keymap.set("n", "<C-d>", function()
-    vim.cmd("normal! 10j")
-    local bottom_lines = vim.o.lines - vim.fn.winline() - 2 -- 2 = cmd and status lines
-    if bottom_lines < 10 then
-        local move_up = 10 - bottom_lines
-        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(move_up .. "<C-e>", true, false, true), "n", true)
-    end
-end, { noremap = true, silent = true })
-vim.keymap.set("n", "<C-u>", function()
-    vim.cmd("normal! 10k")
-    local top_lines = vim.fn.winline()
-    if top_lines < 10 then
-        local move_down = 10 - top_lines
-        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(move_down .. "<C-y>", true, false, true), "n", true)
-    end
-end, { noremap = true, silent = true })
+vim.keymap.set("n", "<C-d>", "10j", { noremap = true })
+vim.keymap.set("n", "<C-u>", "10k", { noremap = true })
 
--- Sign column toggle
-vim.keymap.set("n", "<leader>s", ToggleSigncolumn, { desc = "Toggle sign column", silent = true })
 
 -- LSP
 vim.api.nvim_create_autocmd("LspAttach", {

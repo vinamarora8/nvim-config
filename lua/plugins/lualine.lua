@@ -30,7 +30,7 @@ return {
         opts = {
             options = {
                 section_separators = { left = "", right = "" },
-                theme = "OceanicNext",
+                theme = "onedark",
                 ignore_focus = { "neo-tree", "help" },
             },
             sections = {
