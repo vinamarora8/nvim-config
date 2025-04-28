@@ -32,6 +32,8 @@ vim.keymap.set("n", "<leader>bk", ":bp<bar>sp<bar>bn<bar>bd<CR>", { desc = "Buff
 vim.keymap.set("n", "<leader>n", ":noh<CR>:cclose<CR>", { desc = "Clear highlights & close quickfix list" })
 vim.keymap.set("n", "<C-d>", "10j", { noremap = true })
 vim.keymap.set("n", "<C-u>", "10k", { noremap = true })
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")  -- move lines under selection
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- Sign column toggle
 vim.keymap.set("n", "<leader>s", ToggleSigncolumn, { desc = "Toggle sign column", silent = true })
