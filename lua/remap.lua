@@ -1,11 +1,3 @@
-function ToggleSigncolumn()
-    if vim.wo.signcolumn == "yes" then
-        vim.wo.signcolumn = "no"
-    else
-        vim.wo.signcolumn = "yes"
-    end
-end
-
 function TelescopeSafeGitFiles()
     if os.execute("git rev-parse HEAD 2> /dev/null 1> /dev/null") == 0 then
         vim.cmd("Telescope git_files")
@@ -16,21 +8,17 @@ end
 
 vim.g.mapleader = " "
 
--- File explorers
+--------------------------------
+-- File and buffer management --
+--------------------------------
 vim.keymap.set("n", "<leader>xf", ":Neotree reveal<CR>", { desc = "Explorer: focus", silent = true })
-vim.keymap.set("n", "<leader>e", ":Neotree toggle<CR>", { desc = "Explorer: toggle", silent = true })
-vim.keymap.set("n", "<leader>ff", TelescopeSafeGitFiles, { desc = "Telescope: git files" })
-vim.keymap.set("n", "<leader>fa", ":Telescope find_files<CR>", { desc = "Telescope: all files" })
-
--- Buffer management
-vim.keymap.set("n", "<leader>xb", ":Telescope buffers<CR>")
-vim.keymap.set("n", "<leader>xk", ":bp<bar>sp<bar>bn<bar>bd<CR>", { desc = "Buffer: close current" })
+vim.keymap.set("n", "<leader>e", ":Neotree reveal<CR>", { desc = "Explorer: toggle", silent = true })
+vim.keymap.set("n", "<leader>ff", TelescopeSafeGitFiles, { desc = "[F]ind in git [F]iles" })
+vim.keymap.set("n", "<leader>fa", ":Telescope find_files<CR>", { desc = "[F]ind in [A]ll files" })
 vim.keymap.set("n", "<leader>bl", ":Telescope buffers<CR>", { desc = "Buffer: list in telescope" })
 vim.keymap.set("n", "<leader>bk", ":bp<bar>sp<bar>bn<bar>bd<CR>", { desc = "Buffer: close current" })
 
--- Sign column toggle
-vim.keymap.set("n", "<leader>s", ToggleSigncolumn, { desc = "Toggle sign column", silent = true })
-
+------------------
 -- Text editing --
 ------------------
 vim.keymap.set("i", "<C-c>", "<Esc>")
@@ -43,11 +31,20 @@ vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste over selection withou
 vim.keymap.set("n", "<C-d>", "10j", { noremap = true })
 vim.keymap.set("n", "<C-u>", "10k", { noremap = true })
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Undo tree" })
+-- Window motions
+vim.keymap.set("n", "<C-h>", "<C-w>h", { noremap = true })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { noremap = true })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { noremap = true })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { noremap = true })
 
--- Terminal
+--------------
+-- Terminal --
+--------------
 vim.keymap.set("t", "", "<C-\\><C-N>") -- <Esc><Esc> leaves terminal mode
 
--- LSP
+---------
+-- LSP --
+---------
 vim.api.nvim_create_autocmd("LspAttach", {
     desc = "LSP actions",
     callback = function(e)
@@ -126,6 +123,11 @@ vim.keymap.set("n", "<A-k>", function()
         },
     })
 end)
+
+-- Sign column toggle
+vim.keymap.set("n", "<leader>s", function()
+    vim.wo.signcolumn = ({ ["yes"] = "no", ["no"] = "yes" })[vim.wo.signcolumn]
+end, { desc = "Toggle sign column", silent = true })
 
 -- Lol
 vim.keymap.set("n", "<leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>")
