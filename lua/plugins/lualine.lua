@@ -31,6 +31,7 @@ return {
             options = {
                 section_separators = { left = "", right = "" },
                 theme = "onedark",
+                -- theme = "sonokai",
                 ignore_focus = { "neo-tree", "help" },
             },
             sections = {

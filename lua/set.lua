@@ -27,6 +27,7 @@ vim.opt.mouse = "a" -- use mouse (e.g. for resizing splits, selecting, scrolling
 vim.opt.showmode = true -- show mode in cmdline; statustline is slow sometimes, this is instant
 vim.opt.undofile = true -- persistent undo history
 vim.opt.updatetime = 250 -- time (ms) to wait before current edits are written in a swap file
+vim.opt.timeoutlen = 300 -- time (ms) to wait for key sequences
 
 vim.opt.splitright = true -- default directions to split in
 vim.opt.splitbelow = true -- ...
