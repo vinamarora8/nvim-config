@@ -1,3 +1,4 @@
+--- Try to use git_files if in a git repo, otherwise fallback to find_files.
 function TelescopeSafeGitFiles()
     if os.execute("git rev-parse HEAD 2> /dev/null 1> /dev/null") == 0 then
         vim.cmd("Telescope git_files")
@@ -5,8 +6,6 @@ function TelescopeSafeGitFiles()
         vim.cmd("Telescope find_files")
     end
 end
-
-vim.g.mapleader = " "
 
 --------------------------------
 -- File and buffer management --
@@ -21,21 +20,19 @@ vim.keymap.set("n", "<leader>bk", ":bp<bar>sp<bar>bn<bar>bd<CR>", { desc = "Buff
 ------------------
 -- Text editing --
 ------------------
-vim.keymap.set("i", "<C-c>", "<Esc>")
-vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
--- vim.keymap.set("n", "<leader>n", ":noh<CR>:cclose<CR>", { desc = "Clear highlights & close quickfix list" })
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>") -- remove highlight on escape
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv") -- move selected lines below, try to match new indentation
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv") -- ^^
 vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste over selection without yanking" })
--- Movement
+-- fast scroll up/down
 vim.keymap.set("n", "<C-d>", "10j", { noremap = true })
 vim.keymap.set("n", "<C-u>", "10k", { noremap = true })
+-- undotree
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Undo tree" })
--- Window motions
-vim.keymap.set("n", "<C-h>", "<C-w>h", { noremap = true })
-vim.keymap.set("n", "<C-j>", "<C-w>j", { noremap = true })
-vim.keymap.set("n", "<C-k>", "<C-w>k", { noremap = true })
-vim.keymap.set("n", "<C-l>", "<C-w>l", { noremap = true })
+-- quickfix list
+vim.keymap.set({ "n", "i" }, "<C-c>", require("lib.qflist").toggle_qf, { desc = "Toggle quickfix list" })
+vim.keymap.set("n", "<C-j>", "<cmd>cnext<CR>")
+vim.keymap.set("n", "<C-k>", "<cmd>cprev<CR>")
 
 --------------
 -- Terminal --
