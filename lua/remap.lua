@@ -14,6 +14,7 @@ vim.keymap.set("n", "<leader>xf", ":Neotree reveal<CR>", { desc = "Explorer: foc
 vim.keymap.set("n", "<leader>e", ":Neotree reveal<CR>", { desc = "Explorer: toggle", silent = true })
 vim.keymap.set("n", "<leader>ff", TelescopeSafeGitFiles, { desc = "[F]ind in git [F]iles" })
 vim.keymap.set("n", "<leader>fa", ":Telescope find_files<CR>", { desc = "[F]ind in [A]ll files" })
+vim.keymap.set("n", "<leader>/", ":Telescope live_grep<CR>", { desc = "Live grep" })
 vim.keymap.set("n", "<leader>bl", ":Telescope buffers<CR>", { desc = "Buffer: list in telescope" })
 vim.keymap.set("n", "<leader>bk", ":bp<bar>sp<bar>bn<bar>bd<CR>", { desc = "Buffer: close current" })
 
@@ -33,6 +34,10 @@ vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Undo tree" })
 vim.keymap.set({ "n", "i" }, "<C-c>", require("lib.qflist").toggle_qf, { desc = "Toggle quickfix list" })
 vim.keymap.set("n", "<C-j>", "<cmd>cnext<CR>")
 vim.keymap.set("n", "<C-k>", "<cmd>cprev<CR>")
+-- jump to upper context
+vim.keymap.set("n", "[c", function()
+    require("treesitter-context").go_to_context(vim.v.count1)
+end, { silent = true })
 
 --------------
 -- Terminal --
