@@ -38,6 +38,9 @@ vim.keymap.set("n", "<C-k>", "<cmd>cprev<CR>")
 vim.keymap.set("n", "[c", function()
     require("treesitter-context").go_to_context(vim.v.count1)
 end, { silent = true })
+-- movement in insert mode
+vim.keymap.set("i", "<C-a>", "<Esc>I") -- go to start of line
+vim.keymap.set("i", "<C-e>", "<Esc>A") -- go to end of line
 
 --------------
 -- Terminal --
@@ -85,6 +88,7 @@ function GitBufferInfoToggle()
     gitsigns.toggle_linehl()
     gitsigns.toggle_deleted()
 end
+
 vim.keymap.set("n", "<leader>gg", GitBufferInfoToggle, { desc = "git: toggle diff" })
 vim.keymap.set("n", "<leader>gv", ":Gitsigns select_hunk<CR>", { desc = "select hunk" })
 vim.keymap.set("n", "<leader>gd", ":Gitsigns preview_hunk<CR>", { desc = "preview hunk diff" })
