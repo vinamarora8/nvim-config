@@ -37,7 +37,7 @@ vim.keymap.set("n", "<C-k>", "<cmd>cprev<CR>")
 -- jump to upper context
 vim.keymap.set("n", "[c", function()
     require("treesitter-context").go_to_context(vim.v.count1)
-end, { silent = true })
+end, { silent = true, desc = "Go to start of context" })
 -- movement in insert mode
 vim.keymap.set("i", "<C-a>", "<Esc>I") -- go to start of line
 vim.keymap.set("i", "<C-e>", "<Esc>A") -- go to end of line
