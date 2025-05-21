@@ -22,8 +22,8 @@ vim.keymap.set("n", "<leader>bk", ":bp<bar>sp<bar>bn<bar>bd<CR>", { desc = "Buff
 -- Text editing --
 ------------------
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>") -- remove highlight on escape
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv") -- move selected lines below, try to match new indentation
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv") -- ^^
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")        -- move selected lines below, try to match new indentation
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")        -- ^^
 vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste over selection without yanking" })
 -- fast scroll up/down
 vim.keymap.set("n", "<C-d>", "10j", { noremap = true })
