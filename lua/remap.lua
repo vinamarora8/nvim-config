@@ -50,6 +50,7 @@ vim.keymap.set("t", "", "<C-\\><C-N>") -- <Esc><Esc> leaves terminal mode
 ---------
 -- LSP --
 ---------
+vim.keymap.set("n", "<leader>fs", vim.lsp.buf.workspace_symbol, { desc = "Search symbols" })
 vim.api.nvim_create_autocmd("LspAttach", {
     desc = "LSP actions",
     callback = function(e)
