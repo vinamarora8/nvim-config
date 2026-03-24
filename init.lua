@@ -3,16 +3,17 @@ require("lazy_init")
 require("remap")
 
 -- Autoreload files
--- vim.o.autoread = true
--- vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGained" }, {
---     callback = function()
---         local buftype = vim.api.nvim_buf_get_option(2, "buftype")
---         if buftype ~= "quickfix" and buftype ~= "nofile" and vim.fn.getcmdwintype() == "" then
---             vim.cmd("checktime")
---         end
---     end,
---     pattern = { "*" },
--- })
+vim.o.autoread = true
+vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGained" }, {
+    group = vim.api.nvim_create_augroup("auto-reload", { clear = true }),
+    callback = function()
+        local buftype = vim.bo.buftype
+        if buftype ~= "quickfix" and buftype ~= "nofile" and vim.fn.getcmdwintype() == "" then
+            vim.cmd("checktime")
+        end
+    end,
+    pattern = { "*" },
+})
 
 -- Highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
