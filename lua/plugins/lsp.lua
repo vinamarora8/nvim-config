@@ -1,8 +1,8 @@
 return {
     "neovim/nvim-lspconfig",
     dependencies = {
-        "williamboman/mason.nvim",
-        "williamboman/mason-lspconfig.nvim",
+        "mason-org/mason.nvim",
+        "mason-org/mason-lspconfig.nvim",
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
@@ -23,13 +23,11 @@ return {
 
         require("fidget").setup({})
         require("mason").setup({
-            ensure_installed = { "black", "stylua" },
+            ensure_installed = { "black", "lua_ls", "ty" },
         })
         require("mason-lspconfig").setup({
             ensure_installed = {
                 "lua_ls",
-                "rust_analyzer",
-                "pyright",
             },
             handlers = {
                 function(server_name) -- default handler (optional)
@@ -53,6 +51,9 @@ return {
                 end,
             },
         })
+
+        -- ty: not yet in mason-lspconfig, configure directly
+        vim.lsp.enable('ty')
 
         local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
