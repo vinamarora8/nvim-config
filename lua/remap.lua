@@ -121,21 +121,6 @@ vim.keymap.set("n", "]g", ":Gitsigns next_hunk<CR>", { desc = "goto next hunk" }
 vim.keymap.set("n", "[g", ":Gitsigns prev_hunk<CR>", { desc = "goto prev hunk" })
 vim.keymap.set("n", "<leader>gl", ":Gitsigns setqflist<CR>", { desc = "show change in quickfix list" })
 
--- Copilot chat
-vim.keymap.set("n", "<A-l>", ":CopilotChatToggle<CR>")
-vim.keymap.set("n", "<A-k>", function()
-    require("CopilotChat").open({
-        window = {
-            layout = "float",
-            relative = "cursor",
-            width = 80,
-            height = 5,
-            row = -5,
-            col = 0,
-        },
-    })
-end)
-
 -- Sign column toggle
 vim.keymap.set("n", "<leader>s", function()
     vim.wo.signcolumn = ({ ["yes"] = "no", ["no"] = "yes" })[vim.wo.signcolumn]
