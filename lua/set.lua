@@ -20,18 +20,18 @@ vim.opt.hlsearch = true
 vim.opt.incsearch = true
 vim.opt.inccommand = "split" -- Preview substitutions live, as you type!
 
-vim.opt.scrolloff = 10 -- Minimal number of screen lines to keep above and below the cursor.
+vim.opt.scrolloff = 10       -- Minimal number of screen lines to keep above and below the cursor.
 
 vim.opt.termguicolors = true
 vim.opt.signcolumn = "yes" -- signcolumn - where LSP warnings/errors show up
-vim.opt.mouse = "a" -- use mouse (e.g. for resizing splits, selecting, scrolling)
-vim.opt.showmode = true -- show mode in cmdline; statustline is slow sometimes, this is instant
-vim.opt.undofile = true -- persistent undo history
-vim.opt.updatetime = 250 -- time (ms) to wait before current edits are written in a swap file
-vim.opt.timeoutlen = 1000 -- time (ms) to wait for key sequences
+vim.opt.mouse = "a"        -- use mouse (e.g. for resizing splits, selecting, scrolling)
+vim.opt.showmode = true    -- show mode in cmdline; statustline is slow sometimes, this is instant
+vim.opt.undofile = true    -- persistent undo history
+vim.opt.updatetime = 250   -- time (ms) to wait before current edits are written in a swap file
+vim.opt.timeoutlen = 1000  -- time (ms) to wait for key sequences
 
-vim.opt.splitright = true -- default directions to split in
-vim.opt.splitbelow = true -- ...
+vim.opt.splitright = true  -- default directions to split in
+vim.opt.splitbelow = true  -- ...
 
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`

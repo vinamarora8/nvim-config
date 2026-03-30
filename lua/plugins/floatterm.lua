@@ -1,6 +1,6 @@
 return {
-    {
-        "voldikss/vim-floaterm",
-        cmd = "FloatermNew",
-    },
+  {
+    "voldikss/vim-floaterm",
+    cmd = "FloatermNew",
+  },
 }
