@@ -16,31 +16,31 @@ return {
     local cmp_lsp = require("cmp_nvim_lsp")
 
     require("fidget").setup({})
-    require("mason").setup({
-      ensure_installed = { "black", "lua_ls", "ty" },
-    })
+    require("mason").setup()
     require("mason-lspconfig").setup({
       ensure_installed = {
-        "lua_ls", "ty",
+        "lua_ls",
+        "ty",
+        "stylua",
       },
     })
 
     -- ty: not yet in mason-lspconfig, configure directly
-    vim.lsp.enable('ty')
+    vim.lsp.enable("ty")
 
-    vim.lsp.config('lua_ls', {
+    vim.lsp.config("lua_ls", {
       settings = {
         Lua = {
           runtime = {
             -- Tell the language server which version of Lua you're using
             -- (most likely LuaJIT in the case of Neovim)
-            version = 'LuaJIT',
+            version = "LuaJIT",
           },
           diagnostics = {
             -- Get the language server to recognize the `vim` global
             globals = {
-              'vim',
-              'require'
+              "vim",
+              "require",
             },
           },
           workspace = {
@@ -53,8 +53,7 @@ return {
           },
         },
       },
-    }
-    )
+    })
 
     local cmp_select = { behavior = cmp.SelectBehavior.Select }
 

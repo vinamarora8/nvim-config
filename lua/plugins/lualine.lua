@@ -35,8 +35,8 @@ return {
         ignore_focus = { "neo-tree", "help" },
       },
       sections = {
-        lualine_b = { "branch" },                       --'diff'
-        lualine_c = { "GetCleanBufferPath()" },         --'diff'
+        lualine_b = { "branch" }, --'diff'
+        lualine_c = { "GetCleanBufferPath()" }, --'diff'
         lualine_x = { "diagnostics", "GetCurrLspsStr()", "filetype" },
         lualine_y = {},
       },

@@ -2,8 +2,8 @@ return {
   {
     "sainnhe/sonokai",
     enabled = false,
-    lazy = false,        -- make sure we load this during startup if it is your main colorscheme
-    priority = 1000,     -- make sure to load this before all the other start plugins
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
       vim.g.sonokai_style = "maia"
       vim.g.sonokai_enable_italic = true
@@ -15,8 +15,8 @@ return {
   {
     "tanvirtin/monokai.nvim",
     enabled = true,
-    lazy = false,        -- make sure we load this during startup if it is your main colorscheme
-    priority = 1000,     -- make sure to load this before all the other start plugins
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
       local monokai = require("monokai")
       local palette = monokai.pro
