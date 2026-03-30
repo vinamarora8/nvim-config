@@ -1,3 +1,12 @@
+--------------------------------
+-- File and buffer management --
+--------------------------------
+vim.keymap.set("n", "<leader>e", ":Neotree reveal<CR>", { desc = "Explorer: toggle", silent = true })
+
+---------------
+-- Telescope --
+---------------
+local builtin = require('telescope.builtin')
 --- Try to use git_files if in a git repo, otherwise fallback to find_files.
 function TelescopeSafeGitFiles()
     if os.execute("git rev-parse HEAD 2> /dev/null 1> /dev/null") == 0 then
@@ -7,15 +16,11 @@ function TelescopeSafeGitFiles()
     end
 end
 
---------------------------------
--- File and buffer management --
---------------------------------
-vim.keymap.set("n", "<leader>xf", ":Neotree reveal<CR>", { desc = "Explorer: focus", silent = true })
-vim.keymap.set("n", "<leader>e", ":Neotree reveal<CR>", { desc = "Explorer: toggle", silent = true })
 vim.keymap.set("n", "<leader>ff", TelescopeSafeGitFiles, { desc = "[F]ind in git [F]iles" })
-vim.keymap.set("n", "<leader>fa", ":Telescope find_files<CR>", { desc = "[F]ind in [A]ll files" })
-vim.keymap.set("n", "<leader>/", ":Telescope live_grep<CR>", { desc = "Live grep" })
-vim.keymap.set("n", "<leader>bl", ":Telescope buffers<CR>", { desc = "Buffer: list in telescope" })
+vim.keymap.set("n", "<leader>fa", builtin.find_files, { desc = "[F]ind in [A]ll files" })
+vim.keymap.set("n", "<leader>f/", builtin.live_grep, { desc = "Live grep" })
+vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Buffer: list in telescope" })
+
 vim.keymap.set("n", "<leader>bk", ":bp<bar>sp<bar>bn<bar>bd<CR>", { desc = "Buffer: close current" })
 
 ------------------
