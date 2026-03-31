@@ -41,7 +41,9 @@ vim.keymap.set("i", "<C-e>", "<Esc>A") -- go to end of line
 --------------
 -- Terminal --
 --------------
+local smallterm = require("lib.smallterm")
 vim.keymap.set("t", "<C-Esc>", "<C-\\><C-N>") -- <Esc><Esc> leaves terminal mode
+vim.keymap.set({ "n", "i", "v", "t" }, "<D-j>", smallterm.toggle, { desc = "Toggle small terminal" })
 
 ---------
 -- LSP --
