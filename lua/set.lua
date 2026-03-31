@@ -20,7 +20,8 @@ vim.opt.hlsearch = true
 vim.opt.incsearch = true
 vim.opt.inccommand = "split" -- Preview substitutions live, as you type!
 
-vim.opt.scrolloff = 10 -- Minimal number of screen lines to keep above and below the cursor.
+vim.opt.scroll = 5
+vim.opt.scrolloff = 5 -- Minimal number of screen lines to keep above and below the cursor.
 
 vim.opt.termguicolors = true
 vim.opt.signcolumn = "yes" -- signcolumn - where LSP warnings/errors show up

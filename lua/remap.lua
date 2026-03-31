@@ -21,9 +21,6 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>") -- remove highlight on escap
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv") -- move selected lines below, try to match new indentation
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv") -- ^^
 vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste over selection without yanking" })
--- fast scroll up/down
-vim.keymap.set("n", "<C-d>", "10j", { noremap = true })
-vim.keymap.set("n", "<C-u>", "10k", { noremap = true })
 -- undotree
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Undo tree" })
 -- quickfix list
@@ -41,9 +38,8 @@ vim.keymap.set("i", "<C-e>", "<Esc>A") -- go to end of line
 --------------
 -- Terminal --
 --------------
-local smallterm = require("lib.smallterm")
 vim.keymap.set("t", "<C-Esc>", "<C-\\><C-N>") -- <Esc><Esc> leaves terminal mode
-vim.keymap.set({ "n", "i", "v", "t" }, "<D-j>", smallterm.toggle, { desc = "Toggle small terminal" })
+vim.keymap.set({ "n", "i", "v", "t" }, "<D-j>", require("lib.smallterm").toggle, { desc = "Toggle small terminal" })
 
 ---------
 -- LSP --
